@@ -20,14 +20,14 @@ class TextInput(BaseModel):
 
 @app.post("/fix-grammar")
 async def fix_grammar(data: TextInput):
-    # Validasi kalau teksnya kosong
+
     if not data.text.strip():
         raise HTTPException(status_code=400, detail="Teks tidak boleh kosong ya")
 
     try:
         # Tembak ke API OpenAI
         response = await client.chat.completions.create(
-            model="gpt-3.5-turbo", # Lo bisa ganti ke gpt-4o-mini kalau mau lebih murah/cepat
+            model="gpt-4o-mini", # Lo bisa ganti ke gpt-4o-mini kalau mau lebih murah/cepat
             messages=[
                 {
                     "role": "system", 
